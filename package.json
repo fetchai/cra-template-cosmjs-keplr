@@ -6,6 +6,7 @@
   "repository": "https://github.com/fetchai/cra-template-cosmjs-keplr",
   "license": "MIT",
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
     "cypress": "^9.7.0",
     "typescript": "^4.6.4"
   }
