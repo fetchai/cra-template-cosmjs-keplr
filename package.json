@@ -1,0 +1,8 @@
+{
+  "name": "@fetchai/cra-template-cosmjs-keplr",
+  "version": "1.0.0",
+  "description": "A create-react-app template including cosmjs and keplr / fetch API integration",
+  "main": "index.js",
+  "repository": "https://github.com/fetchai/cra-template-cosmjs-keplr",
+  "license": "MIT"
+}
