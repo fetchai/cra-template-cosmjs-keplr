@@ -4,5 +4,8 @@
   "description": "A create-react-app template including cosmjs and keplr / fetch API integration",
   "main": "index.js",
   "repository": "https://github.com/fetchai/cra-template-cosmjs-keplr",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^9.7.0"
+  }
 }
