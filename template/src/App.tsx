@@ -1,11 +1,10 @@
 import React from 'react';
-import './App.css';
-import { HelloDapp } from "./example/components/HelloDapp";
+import { HelloCosmos } from "./example/components/HelloCosmos";
 
 function App() {
   return (
     <div className="App">
-      <HelloDapp/>
+      <HelloCosmos/>
     </div>
   );
 }

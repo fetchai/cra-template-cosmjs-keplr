@@ -1,12 +1,15 @@
-import { OfflineSigner } from "@cosmjs/proto-signing";
-import { OfflineDirectSigner } from "@cosmjs/proto-signing/build/signer";
+import {OfflineSigner} from "@cosmjs/proto-signing";
+import {AccountData, AminoSignResponse, OfflineAminoSigner, StdSignDoc,} from "@cosmjs/amino";
 import {
-  AccountData,
-  AminoSignResponse,
-  OfflineAminoSigner,
-  StdSignDoc,
-} from "@cosmjs/amino";
-import { CHAIN_ID } from "../../config";
+  CHAIN_ID,
+  CHAIN_NAME,
+  COIN_NAME,
+  KEPLR_CHAIN_CONFIG,
+  REST_ENDPOINT,
+  RPC_ENDPOINT,
+  STAKING_DENOM
+} from "../../config";
+import {Bech32Config, Keplr, KeplrVersion, Key} from "./types";
 
 export function defaultBech32Config(
   mainPrefix: string,
@@ -26,74 +29,6 @@ export function defaultBech32Config(
       mainPrefix + validatorPrefix + consensusPrefix + publicPrefix,
   };
 }
-
-export interface Bech32Config {
-  readonly bech32PrefixAccAddr: string;
-  readonly bech32PrefixAccPub: string;
-  readonly bech32PrefixValAddr: string;
-  readonly bech32PrefixValPub: string;
-  readonly bech32PrefixConsAddr: string;
-  readonly bech32PrefixConsPub: string;
-}
-
-export interface Currency {
-  readonly coinDenom: string;
-  readonly coinMinimalDenom: string;
-  readonly coinDecimals: number;
-  readonly coinGeckoId?: string;
-  readonly coinImageUrl?: string;
-}
-
-export interface BIP44 {
-  readonly coinType: number;
-}
-
-export interface ChainInfo {
-  readonly rpc: string;
-  readonly rest: string;
-  readonly chainId: string;
-  readonly chainName: string;
-  readonly stakeCurrency: Currency;
-  readonly walletUrl?: string;
-  readonly walletUrlForStaking?: string;
-  readonly bip44: BIP44;
-  readonly alternativeBIP44s?: BIP44[];
-  readonly bech32Config: Bech32Config;
-  readonly currencies: Currency[];
-  readonly feeCurrencies: Currency[];
-  readonly coinType?: number;
-  readonly gasPriceStep?: {
-    low: number;
-    average: number;
-    high: number;
-  };
-  readonly features?: string[];
-  readonly beta?: boolean;
-}
-
-export interface Key {
-  readonly name: string;
-  readonly algo: string;
-  readonly pubKey: Uint8Array;
-  readonly address: Uint8Array;
-  readonly bech32Address: string;
-  readonly isNanoLedger?: boolean;
-}
-
-export interface Keplr {
-  readonly version: string;
-
-  enable(chainId: string): Promise<void>;
-
-  experimentalSuggestChain(config: ChainInfo): Promise<void>;
-
-  getKey(chainId: string): Promise<Key>;
-
-  getOfflineSigner(chainId: string): OfflineSigner & OfflineDirectSigner;
-  getOfflineSignerOnlyAmino?: (chainId: string) => OfflineSigner;
-}
-
-export type KeplrVersion = "fetch" | "keplr" | "fetch-legacy" | "unknown";
 
 export function detectKeplr(): [Keplr | undefined, KeplrVersion] {
   // if (process.browser) {
@@ -160,8 +95,29 @@ export async function getKeplrSigner(
   }
 
   if (signer === undefined) {
-    throw new Error("Unknown keplr version, unable to generate signer");
+    throw new Error("Unknown keplr.ts version, unable to generate signer");
   }
 
   return [signer, aminoOnly];
+}
+
+// TODO: refactor
+export async function initKeplr(shouldSuggestChain?: boolean): Promise<Keplr> {
+  const [keplr] = detectKeplr();
+  if (keplr === undefined) {
+    throw new Error("Keplr not present in system");
+  }
+
+  try {
+    await keplr.enable(CHAIN_ID);
+  } catch (error) {
+    if (!shouldSuggestChain) {
+      throw error;
+    }
+
+    // propose the chain for approval
+    await keplr.experimentalSuggestChain(KEPLR_CHAIN_CONFIG);
+  }
+
+  return keplr;
 }

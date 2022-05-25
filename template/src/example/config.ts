@@ -1,3 +1,5 @@
+import {defaultBech32Config} from "./signers/keplr/keplr";
+
 type ChainConfig = {
   chainId: string;
   chainName: string;
@@ -6,6 +8,8 @@ type ChainConfig = {
   contractAddress: string;
   coinName: string;
   stakingDenom: string;
+  faucetUrl: string;
+  gasPrice: string;
 };
 
 // TODO: allow overrides
@@ -17,6 +21,8 @@ const CHAIN_CONFIG: ChainConfig = {
   restEndpoint: "http://127.0.0.1:1317",
   contractAddress: "fetch1qxxlalvsdjd07p07y3rc5fu6ll8k4tmetpha8n",
   stakingDenom: "atestfet",
+  faucetUrl: "https://faucet-dorado.t-v3-london.fetch-ai.com/api/v3/claims",
+  gasPrice: "5000000000",
 };
 
 export const CHAIN_ID = CHAIN_CONFIG.chainId;
@@ -26,3 +32,45 @@ export const REST_ENDPOINT = CHAIN_CONFIG.restEndpoint;
 export const CONTRACT_ADDRESS = CHAIN_CONFIG.contractAddress;
 export const COIN_NAME = CHAIN_CONFIG.coinName;
 export const STAKING_DENOM = CHAIN_CONFIG.stakingDenom;
+export const FAUCET_URL = CHAIN_CONFIG.faucetUrl;
+export const GAS_PRICE = CHAIN_CONFIG.gasPrice;
+
+export const KEPLR_CHAIN_CONFIG = {
+  alternativeBIP44s: [],
+  bech32Config: defaultBech32Config("fetch"),
+  beta: false,
+  bip44: {
+    coinType: 118,
+  },
+  chainId: CHAIN_ID,
+  chainName: CHAIN_NAME,
+  coinType: 118,
+  currencies: [
+    {
+      coinDenom: COIN_NAME,
+      coinMinimalDenom: STAKING_DENOM,
+      coinDecimals: 18,
+    },
+  ],
+  features: [],
+  feeCurrencies: [
+    {
+      coinDenom: COIN_NAME,
+      coinMinimalDenom: STAKING_DENOM,
+      coinDecimals: 18,
+    },
+  ],
+  gasPriceStep: {
+    low: 0,
+    average: 5000000000,
+    high: 6250000000,
+  },
+  rest: REST_ENDPOINT,
+  rpc: RPC_ENDPOINT,
+  stakeCurrency: {
+    coinDenom: COIN_NAME,
+    coinMinimalDenom: STAKING_DENOM,
+    coinDecimals: 18,
+    coinGeckoId: "fetch-ai",
+  },
+};
