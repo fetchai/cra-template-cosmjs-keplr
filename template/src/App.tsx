@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { HelloDapp } from "./example/HelloDapp";
+import { HelloDapp } from "./example/components/HelloDapp";
 
 function App() {
   return (
