@@ -1,0 +1,3 @@
+[submodule "hellodapp"]
+	path = hellodapp
+	url = ../hellodapp
