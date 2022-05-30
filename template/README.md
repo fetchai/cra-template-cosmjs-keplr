@@ -3,7 +3,7 @@
 ```bash
 npx create-react-app --template cosmjs-keplr <destination>
 cd <destination>
-yarn start  # or npm run start
+yarn start  # or npm start
 ```
 
 # About Create React App
