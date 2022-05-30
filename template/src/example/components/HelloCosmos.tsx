@@ -76,20 +76,23 @@ export const HelloCosmos: React.FC<{}> = () => {
       <span className="text-blue-500">"Hello Cosmos"</span>
     </header>
     <section className="w-full space-y-8 py-8 flex flex-col items-center bg-[#FFF8F2]">
-      <div className="flex container space-x-8">
-        <div className="flex-1">
+      <div className="flex md:flex-row sm:flex-col container md:space-x-8 sm:space-y-8">
+        <div className="flex-1 flex flex-col md:items-end sm:items-center md:text-left sm:text-center">
+          <div>
             <span className="font-semibold">
               Nice One, you've generated a react dApp!
             </span>
-          <br/>
-          <span>
+            <br/>
+            <div className="max-w-lg">
               Write a message to let the cosmos know how easy it was to set up.
-              This will be stored in a testnet smart contract and populates the messages below.
-              Read what other users have to say!
-            </span>
+              Greetings are stored in a smart contract on <Link href="https://docs.fetch.ai/ledger_v2/networks/" target="_blank">Fetch.ai
+              testnet (Dorado)</Link> which is queried to populate the messages below.
+              Read what other users have to say about their experience!
+            </div>
+          </div>
         </div>
-        <div className="flex-1 flex flex-col">
-          <div className="space-x-4">
+        <div className="flex-1 flex flex-col md:items-start sm:items-center">
+          <div className="lg:space-x-4 md:space-y-4 md:space-x-0 sm:space-x-4">
             <Input type="textarea"
                    placeholder={placeholder}
                    onChange={_setMessage}
