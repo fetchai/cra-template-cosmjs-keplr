@@ -80,7 +80,7 @@ export const HelloCosmos: React.FC<{}> = () => {
         <div className="flex-1 flex flex-col md:items-end sm:items-center md:text-left sm:text-center">
           <div>
             <span className="font-semibold">
-              Nice One, you've generated a react dApp!
+              Nice one, you've generated a react dApp!
             </span>
             <br/>
             <div className="max-w-lg">
