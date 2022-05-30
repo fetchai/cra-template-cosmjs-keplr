@@ -25,6 +25,7 @@ const CHAIN_CONFIG: ChainConfig = {
   gasPrice: "5000000000",
 };
 
+export const POLLING_INTERVAL_MS = 3000;
 export const CHAIN_ID = CHAIN_CONFIG.chainId;
 export const CHAIN_NAME = CHAIN_CONFIG.chainName;
 export const RPC_ENDPOINT = CHAIN_CONFIG.rpcEndpoint;

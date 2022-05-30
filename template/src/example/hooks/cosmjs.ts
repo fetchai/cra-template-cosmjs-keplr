@@ -1,6 +1,6 @@
 import {Coin, GasPrice, SigningStargateClient, StargateClient} from "@cosmjs/stargate";
 import {useCallback, useEffect, useState} from "react";
-import {FAUCET_URL, GAS_PRICE, RPC_ENDPOINT, STAKING_DENOM} from "../config";
+import {FAUCET_URL, GAS_PRICE, POLLING_INTERVAL_MS, RPC_ENDPOINT, STAKING_DENOM} from "../config";
 import {OfflineSigner} from "@cosmjs/proto-signing";
 import {SigningCosmWasmClient} from "@cosmjs/cosmwasm-stargate";
 
@@ -33,10 +33,17 @@ export function useBalance(address?: string, client?: StargateClient): Coin {
       return;
     }
 
-    const intervalId = setInterval(() => {
-      client.getBalance(address, STAKING_DENOM).then(setBalance);
-    }, 3000);
-    client.getBalance(address, STAKING_DENOM).then(setBalance);
+    const update = () => {
+      client.getBalance(address, STAKING_DENOM)
+        .then(setBalance)
+        .catch((error) => {
+          throw error;
+        });
+    }
+    const intervalId = setInterval(update, POLLING_INTERVAL_MS);
+    update();
+
+    // Clear interval on unmount.
     return () => clearInterval(intervalId);
   }, [address, client]);
 

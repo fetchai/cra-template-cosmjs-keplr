@@ -1,6 +1,6 @@
 import {CosmWasmClient} from "@cosmjs/cosmwasm-stargate";
 import {useEffect, useState} from "react";
-import {CONTRACT_ADDRESS, RPC_ENDPOINT} from "../config";
+import {CONTRACT_ADDRESS, POLLING_INTERVAL_MS, RPC_ENDPOINT} from "../config";
 
 const getGreetingsQuery = {"get_greetings": {}};
 // TODO: move
@@ -16,9 +16,21 @@ export function useGreetings(client?: CosmWasmClient): Greeting[] {
       return // skip query if we know we already need to re-render.
     }
 
-    _client!.queryContractSmart(CONTRACT_ADDRESS, getGreetingsQuery).then((res) => {
-      setGreetings(res.greetings);
-    });
+    const update = () => {
+      _client!.queryContractSmart(CONTRACT_ADDRESS, getGreetingsQuery)
+        .then((res) => {
+          setGreetings(res.greetings);
+        })
+        .catch((error) => {
+          throw error
+        });
+    }
+
+    const intervalId = setInterval(update, POLLING_INTERVAL_MS);
+    update();
+
+    // Clear interval on unmount.
+    return () => clearInterval(intervalId);
   }, [_client]);
 
   return greetings;
