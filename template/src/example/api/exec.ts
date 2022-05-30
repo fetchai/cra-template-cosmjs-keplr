@@ -1,6 +1,6 @@
 import {MsgExecuteContractEncodeObject, SigningCosmWasmClient} from "@cosmjs/cosmwasm-stargate";
 import {OfflineSigner} from "@cosmjs/proto-signing";
-import {MsgExecuteContract} from "@cosmjs/cosmwasm-stargate/build/codec/cosmwasm/wasm/v1beta1/tx";
+import {MsgExecuteContract} from "cosmjs-types/cosmwasm/wasm/v1/tx";
 import {toUtf8} from "@cosmjs/encoding";
 
 export interface ExecContractArgs {
@@ -16,7 +16,7 @@ export async function execContract({client, contract, sender, request}: ExecCont
   try {
     // const resp = await client.execute(nativeAddress, RECONCILIATION_CONTRACT);
     const executeContractMsg: MsgExecuteContractEncodeObject = {
-      typeUrl: "/cosmwasm.wasm.v1beta1.MsgExecuteContract",
+      typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
       value: MsgExecuteContract.fromPartial({
         sender,
         contract,

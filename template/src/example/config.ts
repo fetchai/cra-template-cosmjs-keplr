@@ -19,7 +19,7 @@ const CHAIN_CONFIG: ChainConfig = {
   coinName: "TESTFET",
   rpcEndpoint: "http://127.0.0.1:26657",
   restEndpoint: "http://127.0.0.1:1317",
-  contractAddress: "fetch1qxxlalvsdjd07p07y3rc5fu6ll8k4tmetpha8n",
+  contractAddress: "fetch1km2yj8eqwetxua05uy9yxaa45x6skzsg65hjfyp3ummwe6sx840qlr4jeu",
   stakingDenom: "atestfet",
   faucetUrl: "https://faucet-dorado.t-v3-london.fetch-ai.com/api/v3/claims",
   gasPrice: "5000000000",
