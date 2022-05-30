@@ -14,11 +14,11 @@ type ChainConfig = {
 
 // TODO: allow overrides
 const CHAIN_CONFIG: ChainConfig = {
-  chainId: "localnet",
-  chainName: "LocalNet",
+  chainId: "dorado-1",
+  chainName: "Dorado",
   coinName: "TESTFET",
-  rpcEndpoint: "http://127.0.0.1:26657",
-  restEndpoint: "http://127.0.0.1:1317",
+  rpcEndpoint: "https://rpc-dorado.fetch.ai:443",
+  restEndpoint: "https://rest-dorado.fetch.ai:443",
   contractAddress: "fetch1km2yj8eqwetxua05uy9yxaa45x6skzsg65hjfyp3ummwe6sx840qlr4jeu",
   stakingDenom: "atestfet",
   faucetUrl: "https://faucet-dorado.t-v3-london.fetch-ai.com/api/v3/claims",
