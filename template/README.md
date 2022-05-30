@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# Getting started
+
+```bash
+npx create-react-app --template cosmjs-keplr <destination>
+cd <destination>
+yarn start  # or npm run start
+```
+
+# About Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
