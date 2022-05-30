@@ -1,3 +1,6 @@
+template/package.json
+template/package-lock.json
+template/yarn.lock
 yarn-error.log
 node_modules/
 .idea/
