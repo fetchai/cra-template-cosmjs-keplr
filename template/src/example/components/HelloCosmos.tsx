@@ -50,12 +50,20 @@ export const HelloCosmos: React.FC<{}> = () => {
               Nice one, you've generated a react dApp!
             </span>
               <br/>
-              <div className="max-w-lg">
-                Write a message to let the cosmos know how easy it was to set up.
-                Greetings are stored in a smart contract on <Link href="https://docs.fetch.ai/ledger_v2/networks/"
-                                                                  target="_blank">Fetch.ai
-                testnet (Dorado)</Link> which is queried to populate the messages below.
-                Read what other users have to say about their experience!
+              <div className="max-w-lg space-y-4">
+                <p>
+                  Write a message to let the cosmos know how easy it was to set up.
+                  Greetings are stored in a smart contract on <Link href="https://docs.fetch.ai/ledger_v2/networks/"
+                                                                    target="_blank">Fetch.ai
+                  testnet (Dorado)</Link> which is queried to populate the messages below.
+                </p>
+                <p>
+                  Read what other users have to say about their experience!
+                </p>
+                <p>
+                  Tip the author of your favorite message by clicking on it.
+                  (Tips are quite generous, half testnet balance)
+                </p>
               </div>
             </div>
           </div>
