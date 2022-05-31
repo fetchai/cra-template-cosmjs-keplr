@@ -1,26 +1,22 @@
 import {Greeting, useGreetings} from "../hooks/contract";
-import React from "react";
-import {CosmWasmClient} from "@cosmjs/cosmwasm-stargate";
+import React, {useContext} from "react";
 import TippableGreeting from "./TippableGreeting";
-import {Coin, SigningStargateClient} from "@cosmjs/stargate";
-import {WalletState} from "../hooks/keplr";
+import {NetworkContext} from "../hooks/context";
 
 export interface GreetingsProps {
-  cwClient?: CosmWasmClient;
-  sgClient?: SigningStargateClient;
-  wallet?: WalletState;
-  balance: Coin;
+  context: React.Context<NetworkContext>;
 }
 
-const CosmosGreetings: React.FC<GreetingsProps> = ({wallet, sgClient, cwClient, balance}) => {
+const CosmosGreetings: React.FC<GreetingsProps> = ({context}) => {
+  const {cwClient} = useContext<NetworkContext>(context);
   const greetings = useGreetings(cwClient);
 
   return <div className="flex flex-col items-center">
     <label className="font-semibold mb-2">Greetings from the <span className="text-blue-500">Cosmos</span>:</label>
     <div className="flex flex-col items-center space-y-4">
       {greetings.map(([addr, greeting]: Greeting) => {
-        const _addr = new TextDecoder().decode(new Uint8Array(addr));
-        return <TippableGreeting key={_addr} address={_addr} greeting={greeting} wallet={wallet} sgClient={sgClient} balance={balance}/>
+        const addrString = new TextDecoder().decode(new Uint8Array(addr));
+        return <TippableGreeting key={addrString} context={context} address={addrString} greeting={greeting}/>
       })}
     </div>
   </div>

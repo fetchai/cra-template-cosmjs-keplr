@@ -1,17 +1,17 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useContext} from "react";
 import {WalletState} from "../hooks/keplr";
 import {STAKING_DENOM} from "../config";
 import {Coin, SigningStargateClient} from "@cosmjs/stargate";
+import {NetworkContext} from "../hooks/context";
 
 export interface TippableGreetingProps {
+  context: React.Context<NetworkContext>;
   address: string;
   greeting: string;
-  balance: Coin;
-  wallet?: WalletState;
-  sgClient?: SigningStargateClient;
 }
 
-const TippableGreeting: React.FC<TippableGreetingProps> = ({wallet, sgClient, balance, address, greeting}) => {
+const TippableGreeting: React.FC<TippableGreetingProps> = ({context, address, greeting}) => {
+  const {wallet, sgClient, balance} = useContext<NetworkContext>(context);
   const sendTip = useCallback((address: string) => {
     if (typeof wallet === "undefined") {
       return;

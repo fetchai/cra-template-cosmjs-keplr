@@ -15,7 +15,7 @@ const initialWalletState = {
   connected: false,
 }
 
-// TODO: refactor types
+// TODO: refactor
 export function useWallet(): [WalletState, (shouldSuggestChain?: boolean) => void] {
   const [wallet, setWallet] = useState<WalletState>(initialWalletState);
 
