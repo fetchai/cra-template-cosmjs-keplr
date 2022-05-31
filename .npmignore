@@ -7,3 +7,4 @@ node_modules/
 .tool-versions
 yarn.lock
 hellodapp/
+docs/
