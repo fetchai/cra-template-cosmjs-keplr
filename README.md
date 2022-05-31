@@ -6,6 +6,10 @@ cd <destination>
 yarn start  # or npm start
 ```
 
+# Documentation
+
+See the official docs at [docs.fetch.ai](https://docs.fetch.ai/).
+
 # Contributing
 
 When working on the template, building the template directory is a much faster feedback loop than generating an app from the template.

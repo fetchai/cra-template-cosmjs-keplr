@@ -6,6 +6,40 @@ cd <destination>
 yarn start  # or npm start
 ```
 
+### "Hello Cosmos"
+
+Projects generated from this template include an [example DApp](https://docs.fetch.ai/create-react-app/example_dapp) which demonstrates Cosmjs and Keplr API usage in the form of a simple frontend.
+
+| Example feature                             | Interaction type        |
+|---------------------------------------------|-------------------------|
+| Print greetings submitted by other users    | CosmWasm contract query |
+| Connect with Fetch browser-extension wallet | Keplr / Fetch wallet    |
+| Submit greeting                             | CosmWasm contract call  |
+| Print address                               | native query            |
+| Print balance                               | native query            |
+| Tip other users                             | native token transfer   |
+
+### Project structure
+
+```
+/src/example
+├── api               | CosmWasm contract execution
+│   ├── exec.ts
+│   └── greetings.ts
+├── components        | React components
+│   └── ...
+├── config.ts         | Network & contract configuration
+├── hooks             | React hooks
+│   ├── context.ts
+│   ├── contract.ts
+│   ├── cosmjs.ts
+│   └── keplr.ts
+├── signers            | Signer APIs
+│   └── keplr
+├── utils.ts
+└── ...
+```
+
 # Removing the example
 
 The example app is almost entirely contained in the `src/example` directory.
