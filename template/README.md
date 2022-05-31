@@ -6,6 +6,32 @@ cd <destination>
 yarn start  # or npm start
 ```
 
+# Removing the example
+
+The example app is almost entirely contained in the `src/example` directory.
+To remove the example:
+
+- Delete the [src/example](./src/example) directory
+- Remove the `@import` from [src/index.css](./src/index.css)
+- Remove these lines from [public/index.html](./public/index.html):
+    ```html
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              inter: [ "Inter", "Sans-Serif" ],
+            },
+          }
+        }
+      }
+    </script>
+    ```
+
 # About Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
