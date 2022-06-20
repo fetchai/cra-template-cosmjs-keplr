@@ -14,7 +14,7 @@ The "Hello Cosmos" example DApp demonstrates the following kinds of interactions
 ### Features
 
 - Print greetings submitted by other users
-- Connect with Fetch browser-extension wallet
+- Connect with Fetch wallet
     - Print address
     - Print balance
 - Submit greeting
