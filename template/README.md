@@ -10,14 +10,14 @@ yarn start  # or npm start
 
 Projects generated from this template include an [example DApp](https://docs.fetch.ai/create-react-app/example_dapp) which demonstrates Cosmjs and Keplr API usage in the form of a simple frontend.
 
-| Example feature                             | Interaction type        |
-|---------------------------------------------|-------------------------|
-| Print greetings submitted by other users    | CosmWasm contract query |
-| Connect with Fetch browser-extension wallet | Keplr / Fetch wallet    |
-| Submit greeting                             | CosmWasm contract call  |
-| Print address                               | native query            |
-| Print balance                               | native query            |
-| Tip other users                             | native token transfer   |
+| Example feature                           | Interaction type        |
+|-------------------------------------------|-------------------------|
+| Print greetings submitted by other users  | CosmWasm contract query |
+| Connect with Fetch wallet                 | Keplr / Fetch wallet    |
+| Submit greeting                           | CosmWasm contract call  |
+| Print address                             | native query            |
+| Print balance                             | native query            |
+| Tip other users                           | native token transfer   |
 
 ### Project structure
 
