@@ -6,8 +6,8 @@ generation of react app boilerplate via templates.
 In order to expedite distributed application (DApp) development, we maintain a create-react-app template: [cra-template-cosmjs-keplr](https://github.com/fetchai/cra-template-cosmjs-keplr).
 Projects generated from this template include all the necessary dependencies and build configuration needed to:
 
-- Interact with the Fetch network wallet or Keplr
-    - [fetchai/keplr-extension (github)](https://github.com/fetchai/keplr-extension/blob/master/packages/provider/src/core.ts#L43)
+- Interact with the Fetch or Keplr wallet
+    - [fetchai/fetch-wallet (github)](https://github.com/fetchai/fetch-wallet/blob/master/packages/provider/src/core.ts#L43)
 - Interact with cosmos-based networks
     - [@cosmjs/stargate (npm)](https://www.npmjs.com/package/@cosmjs/stargate)
     - [@cosmjs/cosmwasm-stargate (npm)](https://www.npmjs.com/package/@cosmjs/cosmwasm-stargate)
