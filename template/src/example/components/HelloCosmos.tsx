@@ -53,7 +53,7 @@ export const HelloCosmos: React.FC<{}> = () => {
               <div className="max-w-lg space-y-4">
                 <p>
                   Write a message to let the cosmos know how easy it was to set up.
-                  Greetings are stored in a smart contract on <Link href="https://docs.fetch.ai/ledger_v2/networks/"
+                  Greetings are stored in a smart contract on <Link href="https://docs.fetch.ai/ledger_v2/live-networks/#dorado"
                                                                     target="_blank">Fetch.ai
                   testnet (Dorado)</Link> which is queried to populate the messages below.
                 </p>
