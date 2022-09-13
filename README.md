@@ -1,10 +1,13 @@
 # Generating a react app from the template
 
+Quick start:
 ```bash
 npx create-react-app --template cosmjs-keplr <destination>
 cd <destination>
 yarn start  # or npm start
 ```
+
+See [./template/README](./template/README.md) for more.
 
 # Documentation
 
